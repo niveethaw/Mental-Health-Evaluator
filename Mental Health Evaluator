@@ -1,0 +1,1297 @@
+import java.awt.*;
+import java.awt.event.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Scanner;
+import javax.swing.*;
+import java.awt.Color;
+
+public class mentaldisorder{
+     private static int ptsdCounter=0;
+     private static int ocdCounter=0;
+     private static int parkinsonCounter=0;
+     private static int alzheimersCounter=0;
+     private static int bipolarCounter=0;
+     private static int schizophreniaCounter=0;
+     private static int dissociativeidentityCounter=0;
+     private static int depressioncounter=0;
+     private static int anxietyCounter=0;
+     private static int eatingdisorderCounter=0;
+     private static int insomniaCounter=0;
+     private static int aspergerCounter=0;
+     private static int alsCounter=0;
+    private static Dimension size6;
+    private static JPanel resultPanel;
+
+    //===========================================================GUI================
+    //===============================================================================
+    //===============================================================================
+    //===============================================================================
+    public static void main(String[] args){
+        JFrame frame = new JFrame("Mental Health Evaluator");
+        frame.setBackground(Color.yellow);
+        frame.setForeground(Color.yellow);
+        JPanel panel = new JPanel();
+        JPanel agePanel = new JPanel();
+        JPanel childPanel = new JPanel();
+        JPanel adultPanel = new JPanel();
+        JPanel adultPanel2 = new JPanel();  
+        JPanel adultPanel3 = new JPanel();      
+        
+        frame.getContentPane();
+        JButton button = new JButton("Start Questionnaire");
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel);
+                panel.setVisible(false);
+                adultPanel.setVisible(true);
+            }
+        });
+        Dimension size = button.getPreferredSize();
+        button.setBounds(800, 600, size.width, size.height);
+        JLabel label = new JLabel("Find out if you show symptoms of a mental disorder");
+        label.setFont(new Font("roboto", Font.BOLD, 70));
+        Dimension size2 = label.getPreferredSize();
+        label.setBounds(25, 300, size2.width, size2.height);
+        panel.setLayout(null);
+        panel.add(button);
+        panel.add(label);
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.add(panel);
+
+        JButton child = new JButton("Child");
+        Dimension size3 = child.getPreferredSize();
+        
+        JLabel label3 = new JLabel("Does your child often have trouble holding attention on activities?");
+        size6 = label.getPreferredSize();
+       //======================================================================================================= 
+        JLabel label4 = new JLabel("Do you have trouble sleeping?");
+        label4.setFont(new Font("roboto", Font.BOLD, 50));
+        label4.setBounds(550, 300, size6.width, size6.height);
+        JButton yes2 = new JButton("Yes");
+        JButton no2 = new JButton("No");
+        yes2.setBounds(700, 600, size3.width, size3.height);
+        no2.setBounds(1000, 600, size3.width, size3.height);
+        yes2.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                depressioncounter++;
+                ptsdCounter++;
+                dissociativeidentityCounter++;
+                eatingdisorderCounter++;
+                insomniaCounter++;
+                System.out.println("Counter:" + depressioncounter);
+                frame.add(adultPanel2);
+                adultPanel.setVisible(false);
+                adultPanel2.setVisible(true);
+            }
+        });
+        no2.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel2);
+                adultPanel.setVisible(false);
+                adultPanel2.setVisible(true);
+            }
+        });
+        adultPanel.setLayout(null);
+        adultPanel.add(label4);
+        adultPanel.add(yes2);
+        adultPanel.add(no2);
+        adultPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+ 
+        JLabel label5 = new JLabel("Do you want to hurt yourself frequently?"); //start copying from here
+        label5.setFont(new Font("roboto", Font.BOLD, 50));
+        label5.setBounds(450, 300, size6.width, size6.height);
+        JButton yes3 = new JButton("Yes");
+        JButton no3 = new JButton("No");
+        //Dimension size8 = label.getPreferredSize();
+        yes3.setBounds(700, 600, size3.width, size3.height);
+        no3.setBounds(1000, 600, size3.width, size3.height);
+        yes3.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                ocdCounter++;
+                depressioncounter++;
+                dissociativeidentityCounter++;
+                frame.add(adultPanel3);
+                adultPanel2.setVisible(false);
+                adultPanel3.setVisible(true);
+            }
+        });
+        no3.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel3);
+                adultPanel2.setVisible(false);
+                adultPanel3.setVisible(true);
+            }
+        });
+        adultPanel2.setLayout(null);
+        adultPanel2.add(label5);
+        adultPanel2.add(yes3);
+        adultPanel2.add(no3);
+        adultPanel2.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));//copy paste till here
+       // frame.add(adultPanel2);
+        
+                
+        //====================================================================================
+        JPanel adultPanel4 = new JPanel();
+        JLabel label6 = new JLabel("Have you ever had unwanted sexual thoughts, including obsessions about homosexuality or incest?");
+        label6.setFont(new Font("roboto", Font.BOLD, 36));
+        label6.setBounds(30, 300, size6.width, size6.height);
+        JButton yes6 = new JButton("Yes");
+        JButton no6 = new JButton("No");;
+        yes6.setBounds(700, 600, size3.width, size3.height);
+        no6.setBounds(1000, 600, size3.width, size3.height);
+        yes6.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                ocdCounter++;
+                bipolarCounter++;
+                frame.add(adultPanel4);
+                adultPanel3.setVisible(false);
+                adultPanel4.setVisible(true);
+            }
+        });
+        no6.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel4);
+                adultPanel3.setVisible(false);
+                adultPanel4.setVisible(true);
+            }
+        });
+        adultPanel3.setLayout(null);
+        adultPanel3.add(label6);
+        adultPanel3.add(yes6);
+        adultPanel3.add(no6);
+        adultPanel3.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+       
+        //====================================================================================
+        frame.setSize(1800, 1000);
+        frame.setVisible(true);
+ 
+ 
+        //-------------------------------------------------------------------------------------
+        JPanel adultPanel5 = new JPanel();  
+        JLabel label7 = new JLabel("Do you have nightmares often?");
+        label7.setFont(new Font("roboto", Font.BOLD, 50));
+        label7.setBounds(550, 300, size6.width, size6.height);
+        JButton yes7 = new JButton("Yes");
+        JButton no7 = new JButton("No");
+        yes7.setBounds(700, 600, size3.width, size3.height);
+        no7.setBounds(1000, 600, size3.width, size3.height);
+        yes7.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                ptsdCounter++;
+                frame.add(adultPanel5);
+                adultPanel4.setVisible(false);
+                adultPanel5.setVisible(true);
+            }
+        });
+        no7.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel5);
+                adultPanel4.setVisible(false);
+                adultPanel5.setVisible(true);
+            }
+        });
+        adultPanel4.setLayout(null);
+        adultPanel4.add(label7);
+        adultPanel4.add(yes7);
+        adultPanel4.add(no7);
+        adultPanel4.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        //-------------------------------------------------------------------------------------
+        
+        //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+        JPanel adultPanel6 = new JPanel();  
+        JLabel label8 = new JLabel("Do you feel physically responsive,such as a surge in heart rate?");
+        label8.setFont(new Font("roboto", Font.BOLD, 50));
+        label8.setBounds(120, 300, size6.width, size6.height);
+        JButton yes8 = new JButton("Yes");
+        JButton no8 = new JButton("No");
+        yes8.setBounds(700, 600, size3.width, size3.height);
+        no8.setBounds(1000, 600, size3.width, size3.height);
+        yes8.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                ptsdCounter++;
+                frame.add(adultPanel6);
+                adultPanel5.setVisible(false);
+                adultPanel6.setVisible(true);
+            }
+        });
+        no8.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel6);
+                adultPanel5.setVisible(false);
+                adultPanel6.setVisible(true);
+            }
+        });
+        adultPanel5.setLayout(null);
+        adultPanel5.add(label8);
+        adultPanel5.add(yes8);
+        adultPanel5.add(no8);
+        //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+        //=====================================================================================
+        JPanel adultPanel7 = new JPanel();
+        JLabel label9 = new JLabel("Do you ever feel the need to act abnormally for no reason?");
+        label9.setFont(new Font("roboto", Font.BOLD, 50));
+        label9.setBounds(130, 300, size6.width, size6.height);
+        JButton yes9 = new JButton("Yes");
+        JButton no9 = new JButton("No");;
+        yes9.setBounds(700, 600, size3.width, size3.height);
+        no9.setBounds(1000, 600, size3.width, size3.height);
+        yes9.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                ocdCounter++;
+                bipolarCounter++;
+                frame.add(adultPanel7);
+                adultPanel6.setVisible(false);
+                adultPanel7.setVisible(true);
+            }
+        });
+        no9.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel7);
+                adultPanel6.setVisible(false);
+                adultPanel7.setVisible(true);
+            }
+        });
+        adultPanel6.setLayout(null);
+        adultPanel6.add(label9);
+        adultPanel6.add(yes9);
+        adultPanel6.add(no9);
+        adultPanel6.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        //=====================================================================================
+         JPanel adultPanel8 = new JPanel();
+        JLabel label10 = new JLabel("Do you have muscle stiffness?");
+        label10.setFont(new Font("roboto", Font.BOLD, 50));
+        label10.setBounds(600, 300, size6.width, size6.height);
+        JButton yes10 = new JButton("Yes");
+        JButton no10 = new JButton("No");;
+        yes10.setBounds(700, 600, size3.width, size3.height);
+        no10.setBounds(1000, 600, size3.width, size3.height);
+        yes10.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                parkinsonCounter++;
+                alsCounter++;
+                frame.add(adultPanel8);
+                adultPanel7.setVisible(false);
+                adultPanel8.setVisible(true);
+            }
+        });
+        no10.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel8);
+                adultPanel7.setVisible(false);
+                adultPanel8.setVisible(true);
+            }
+        });
+        adultPanel7.setLayout(null);
+        adultPanel7.add(label10);
+        adultPanel7.add(yes10);
+        adultPanel7.add(no10);
+        adultPanel7.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+//==============================================================================================
+ 
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+        JPanel adultPanel9 = new JPanel();
+        JLabel label11 = new JLabel("Do you get triggered in an abnormal way by certain actions such as shaking hands?");
+        label11.setFont(new Font("roboto", Font.BOLD, 40));
+        label11.setBounds(120, 300, size6.width, size6.height);
+        JButton yes11 = new JButton("Yes");
+        JButton no11 = new JButton("No");;
+        yes11.setBounds(700, 600, size3.width, size3.height);
+        no11.setBounds(1000, 600, size3.width, size3.height);
+        yes11.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                ocdCounter++;
+                frame.add(adultPanel9);
+                adultPanel8.setVisible(false);
+                adultPanel9.setVisible(true);
+            }
+        });
+        no11.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel9);
+                adultPanel8.setVisible(false);
+                adultPanel9.setVisible(true);
+            }
+        });
+        adultPanel8.setLayout(null);
+        adultPanel8.add(label11);
+        adultPanel8.add(yes11);
+        adultPanel8.add(no11);
+        adultPanel8.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+        JPanel adultPanel10 = new JPanel();
+        JLabel label12 = new JLabel("Do you have tremors quite often?");
+        label12.setFont(new Font("roboto", Font.BOLD, 50));
+        label12.setBounds(550, 300, size6.width, size6.height);
+        JButton yes12 = new JButton("Yes");
+        JButton no12 = new JButton("No");;
+        yes12.setBounds(700, 600, size3.width, size3.height);
+        no12.setBounds(1000, 600, size3.width, size3.height);
+        yes12.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                parkinsonCounter++;
+                frame.add(adultPanel10);
+                adultPanel9.setVisible(false);
+                adultPanel10.setVisible(true);
+            }
+        });
+        no12.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel10);
+                adultPanel9.setVisible(false);
+                adultPanel10.setVisible(true);
+            }
+        });
+        adultPanel9.setLayout(null);
+        adultPanel9.add(label12);
+        adultPanel9.add(yes12);
+        adultPanel9.add(no12);
+        adultPanel9.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+        JPanel adultPanel11 = new JPanel();
+        JLabel label13 = new JLabel("Do you have a loss in automatic movement such as walking?");
+        label13.setFont(new Font("roboto", Font.BOLD, 50));
+        label13.setBounds(130, 300, size6.width, size6.height);
+        JButton yes13 = new JButton("Yes");
+        JButton no13 = new JButton("No");;
+        yes13.setBounds(700, 600, size3.width, size3.height);
+        no13.setBounds(1000, 600, size3.width, size3.height);
+        yes13.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                parkinsonCounter++;
+                frame.add(adultPanel11);
+                adultPanel10.setVisible(false);
+                adultPanel11.setVisible(true);
+            }
+        });
+        no13.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel11);
+                adultPanel10.setVisible(false);
+                adultPanel11.setVisible(true);
+            }
+        });
+        adultPanel10.setLayout(null);
+        adultPanel10.add(label13);
+        adultPanel10.add(yes13);
+        adultPanel10.add(no13);
+        adultPanel10.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+        
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    JPanel adultPanel12 = new JPanel();
+        JLabel label14 = new JLabel("Does your speech or writing change?");
+        label14.setFont(new Font("roboto", Font.BOLD, 50));
+        label14.setBounds(500, 300, size6.width, size6.height);
+        JButton yes14 = new JButton("Yes");
+        JButton no14 = new JButton("No");;
+        yes14.setBounds(700, 600, size3.width, size3.height);
+        no14.setBounds(1000, 600, size3.width, size3.height);
+        yes14.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                alzheimersCounter++;
+                alsCounter++;
+                parkinsonCounter++;
+                frame.add(adultPanel12);
+                adultPanel11.setVisible(false);
+                adultPanel12.setVisible(true);
+            }
+        });
+        no14.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel12);
+                adultPanel11.setVisible(false);
+                adultPanel12.setVisible(true);
+            }
+        });
+        adultPanel11.setLayout(null);
+        adultPanel11.add(label14);
+        adultPanel11.add(yes14);
+        adultPanel11.add(no14);
+        adultPanel11.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+JPanel adultPanel13 = new JPanel();
+        JLabel label15 = new JLabel("Do you have frequent memory loss in everyday life?");
+        label15.setFont(new Font("roboto", Font.BOLD, 50));
+        label15.setBounds(330, 300, size6.width, size6.height);
+        JButton yes15 = new JButton("Yes");
+        JButton no15 = new JButton("No");;
+        yes15.setBounds(700, 600, size3.width, size3.height);
+        no15.setBounds(1000, 600, size3.width, size3.height);
+        yes15.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                alzheimersCounter++;
+                frame.add(adultPanel13);
+                adultPanel12.setVisible(false);
+                adultPanel13.setVisible(true);
+            }
+        });
+        no15.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel13);
+                adultPanel12.setVisible(false);
+                adultPanel13.setVisible(true);
+            }
+        });
+        adultPanel12.setLayout(null);
+        adultPanel12.add(label15);
+        adultPanel12.add(yes15);
+        adultPanel12.add(no15);
+        adultPanel12.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+        JPanel adultPanel14 = new JPanel();
+        JLabel label16 = new JLabel("Do you experience trouble chewing or swallowing?");
+        label16.setFont(new Font("roboto", Font.BOLD, 50));
+        label16.setBounds(350, 300, size6.width, size6.height);
+        JButton yes16 = new JButton("Yes");
+        JButton no16 = new JButton("No");;
+        yes16.setBounds(700, 600, size3.width, size3.height);
+        no16.setBounds(1000, 600, size3.width, size3.height);
+        yes16.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                alsCounter++;
+                frame.add(adultPanel14);
+                adultPanel13.setVisible(false);
+                adultPanel14.setVisible(true);
+            }
+        });
+        no16.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel14);
+                adultPanel13.setVisible(false);
+                adultPanel14.setVisible(true);
+            }
+        });
+        adultPanel13.setLayout(null);
+        adultPanel13.add(label16);
+        adultPanel13.add(yes16);
+        adultPanel13.add(no16);
+        adultPanel13.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+       
+        //====================================================================================
+        frame.setSize(1800, 1000);
+        frame.setVisible(true);
+ 
+ 
+        //-------------------------------------------------------------------------------------
+        JPanel adultPanel15 = new JPanel();  
+        JLabel label17 = new JLabel("Do you have a hard time holding items with your hands?");
+        label17.setFont(new Font("roboto", Font.BOLD, 50));
+        label17.setBounds(300, 300, size6.width, size6.height);
+        JButton yes17 = new JButton("Yes");
+        JButton no17 = new JButton("No");
+        yes17.setBounds(700, 600, size3.width, size3.height);
+        no17.setBounds(1000, 600, size3.width, size3.height);
+        yes17.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                alsCounter++;
+                frame.add(adultPanel15);
+                adultPanel14.setVisible(false);
+                adultPanel15.setVisible(true);
+            }
+        });
+        no17.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel15);
+                adultPanel14.setVisible(false);
+                adultPanel15.setVisible(true);
+            }
+        });
+        adultPanel14.setLayout(null);
+        adultPanel14.add(label17);
+        adultPanel14.add(yes17);
+        adultPanel14.add(no17);
+        adultPanel14.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        //-------------------------------------------------------------------------------------
+        
+        //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+        JPanel adultPanel16 = new JPanel();  
+        JLabel label18 = new JLabel("Does your mood change quite often?");
+        label18.setFont(new Font("roboto", Font.BOLD, 50));
+        label18.setBounds(500, 300, size6.width, size6.height);
+        JButton yes18 = new JButton("Yes");
+        JButton no18 = new JButton("No");
+        yes18.setBounds(700, 600, size3.width, size3.height);
+        no18.setBounds(1000, 600, size3.width, size3.height);
+        yes18.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                alzheimersCounter++;
+                frame.add(adultPanel16);
+                adultPanel15.setVisible(false);
+                adultPanel16.setVisible(true);
+            }
+        });
+        no18.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel16);
+                adultPanel15.setVisible(false);
+                adultPanel16.setVisible(true);
+            }
+        });
+        adultPanel15.setLayout(null);
+        adultPanel15.add(label18);
+        adultPanel15.add(yes18);
+        adultPanel15.add(no18);
+        //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+        //=====================================================================================
+        JPanel adultPanel17 = new JPanel();
+        JLabel label19 = new JLabel("Do you get confused with the time or place?");
+        label19.setFont(new Font("roboto", Font.BOLD, 50));
+        label19.setBounds(420, 300, size6.width, size6.height);
+        JButton yes19 = new JButton("Yes");
+        JButton no19 = new JButton("No");;
+        yes19.setBounds(700, 600, size3.width, size3.height);
+        no19.setBounds(1000, 600, size3.width, size3.height);
+        yes19.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                alzheimersCounter++;
+                frame.add(adultPanel17);
+                adultPanel16.setVisible(false);
+                adultPanel17.setVisible(true);
+            }
+        });
+        no19.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel17);
+                adultPanel16.setVisible(false);
+                adultPanel17.setVisible(true);
+            }
+        });
+        adultPanel16.setLayout(null);
+        adultPanel16.add(label19);
+        adultPanel16.add(yes19);
+        adultPanel16.add(no19);
+        adultPanel16.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        //=====================================================================================
+         JPanel adultPanel18 = new JPanel();
+        JLabel label20 = new JLabel("Have you slept much less than usual but feel quite normal?");
+        label20.setFont(new Font("roboto", Font.BOLD, 50));
+        label20.setBounds(170, 300, size6.width, size6.height);
+        JButton yes20 = new JButton("Yes");
+        JButton no20 = new JButton("No");;
+        yes20.setBounds(700, 600, size3.width, size3.height);
+        no20.setBounds(1000, 600, size3.width, size3.height);
+        yes20.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                bipolarCounter++;
+                frame.add(adultPanel18);
+                adultPanel17.setVisible(false);
+                adultPanel18.setVisible(true);
+            }
+        });
+        no20.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel18);
+                adultPanel17.setVisible(false);
+                adultPanel18.setVisible(true);
+            }
+        });
+        adultPanel17.setLayout(null);
+        adultPanel17.add(label20);
+        adultPanel17.add(yes20);
+        adultPanel17.add(no20);
+        adultPanel17.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+//==============================================================================================
+ 
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+        JPanel adultPanel19 = new JPanel();
+        JLabel label21 = new JLabel("Have you ever been much more talkative or social than usual?");
+        label21.setFont(new Font("roboto", Font.BOLD, 50));
+        label21.setBounds(200, 300, size6.width, size6.height);
+        JButton yes21 = new JButton("Yes");
+        JButton no21 = new JButton("No");;
+        yes21.setBounds(700, 600, size3.width, size3.height);
+        no21.setBounds(1000, 600, size3.width, size3.height);
+        yes21.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                bipolarCounter++;
+                frame.add(adultPanel19);
+                adultPanel18.setVisible(false);
+                adultPanel19.setVisible(true);
+            }
+        });
+        no21.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel19);
+                adultPanel18.setVisible(false);
+                adultPanel19.setVisible(true);
+            }
+        });
+        adultPanel18.setLayout(null);
+        adultPanel18.add(label21);
+        adultPanel18.add(yes21);
+        adultPanel18.add(no21);
+        adultPanel18.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+        JPanel adultPanel20 = new JPanel();
+        JLabel label22 = new JLabel("Do you ever find it difficult to express yourself to others, especially your friends and family?");
+        label22.setFont(new Font("roboto", Font.BOLD, 32));
+        label22.setBounds(150, 300, size6.width, size6.height);
+        JButton yes22 = new JButton("Yes");
+        JButton no22 = new JButton("No");;
+        yes22.setBounds(700, 600, size3.width, size3.height);
+        no22.setBounds(1000, 600, size3.width, size3.height);
+        yes22.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                schizophreniaCounter++;
+                frame.add(adultPanel20);
+                adultPanel19.setVisible(false);
+                adultPanel20.setVisible(true);
+            }
+        });
+        no22.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel20);
+                adultPanel19.setVisible(false);
+                adultPanel20.setVisible(true);
+            }
+        });
+        adultPanel19.setLayout(null);
+        adultPanel19.add(label22);
+        adultPanel19.add(yes22);
+        adultPanel19.add(no22);
+        adultPanel19.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+        JPanel adultPanel21 = new JPanel();
+        JLabel label23 = new JLabel("Do you think you believe in things about reality that nobody else seems to understand or believe in?");
+        label23.setFont(new Font("roboto", Font.BOLD, 32));
+        label23.setBounds(100, 300, size6.width, size6.height);
+        JButton yes23 = new JButton("Yes");
+        JButton no23 = new JButton("No");;
+        yes23.setBounds(700, 600, size3.width, size3.height);
+        no23.setBounds(1000, 600, size3.width, size3.height);
+        yes23.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                schizophreniaCounter++;
+                frame.add(adultPanel21);
+                adultPanel20.setVisible(false);
+                adultPanel21.setVisible(true);
+            }
+        });
+        no23.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel21);
+                adultPanel20.setVisible(false);
+                adultPanel21.setVisible(true);
+            }
+        });
+        adultPanel20.setLayout(null);
+        adultPanel20.add(label23);
+        adultPanel20.add(yes23);
+        adultPanel20.add(no23);
+        adultPanel20.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+        
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    JPanel adultPanel22 = new JPanel();
+        JLabel label24 = new JLabel("Do you ever feel like you cannot get a hold on your thoughts?");
+        label24.setFont(new Font("roboto", Font.BOLD, 50));
+        label24.setBounds(120, 300, size6.width, size6.height);
+        JButton yes24 = new JButton("Yes");
+        JButton no24 = new JButton("No");;
+        yes24.setBounds(700, 600, size3.width, size3.height);
+        no24.setBounds(1000, 600, size3.width, size3.height);
+        yes24.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                schizophreniaCounter++;
+                aspergerCounter++;
+                frame.add(adultPanel22);
+                adultPanel21.setVisible(false);
+                adultPanel22.setVisible(true);
+            }
+        });
+        no24.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel22);
+                adultPanel21.setVisible(false);
+                adultPanel22.setVisible(true);
+            }
+        });
+        adultPanel21.setLayout(null);
+        adultPanel21.add(label24);
+        adultPanel21.add(yes24);
+        adultPanel21.add(no24);
+        adultPanel21.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+JPanel adultPanel23 = new JPanel();
+        JLabel label25 = new JLabel("Do you feel like others are plotting against you because they are jealous of you or feel like you possess magical powers?");
+        label25.setFont(new Font("roboto", Font.BOLD, 30));
+        label25.setBounds(20, 300, size6.width, size6.height);
+        JButton yes25 = new JButton("Yes");
+        JButton no25 = new JButton("No");;
+        yes25.setBounds(700, 600, size3.width, size3.height);
+        no25.setBounds(1000, 600, size3.width, size3.height);
+        yes25.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                schizophreniaCounter++;
+                dissociativeidentityCounter++;
+                frame.add(adultPanel23);
+                adultPanel22.setVisible(false);
+                adultPanel23.setVisible(true);
+            }
+        });
+        no25.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel23);
+                adultPanel22.setVisible(false);
+                adultPanel23.setVisible(true);
+            }
+        });
+        adultPanel22.setLayout(null);
+        adultPanel22.add(label25);
+        adultPanel22.add(yes25);
+        adultPanel22.add(no25);
+        adultPanel22.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+        JPanel adultPanel24 = new JPanel();
+        JLabel label26 = new JLabel("Have you ever felt like your emotions changed very quickly or felt like your anger was inappropriate?");
+        label26.setFont(new Font("roboto", Font.BOLD, 36));
+        label26.setBounds(20, 300, size6.width, size6.height);
+        JButton yes26 = new JButton("Yes");
+        JButton no26 = new JButton("No");;
+        yes26.setBounds(700, 600, size3.width, size3.height);
+        no26.setBounds(1000, 600, size3.width, size3.height);
+        yes26.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                depressioncounter++;
+                anxietyCounter++;
+                dissociativeidentityCounter++;
+                frame.add(adultPanel24);
+                adultPanel23.setVisible(false);
+                adultPanel24.setVisible(true);
+            }
+        });
+        no26.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel24);
+                adultPanel23.setVisible(false);
+                adultPanel24.setVisible(true);
+            }
+        });
+        adultPanel23.setLayout(null);
+        adultPanel23.add(label26);
+        adultPanel23.add(yes26);
+        adultPanel23.add(no26);
+        adultPanel23.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+       
+        //====================================================================================
+        frame.setSize(1800, 1000);
+        frame.setVisible(true);
+ 
+ 
+        //-------------------------------------------------------------------------------------
+        JPanel adultPanel25 = new JPanel();  
+        JLabel label27 = new JLabel("Do you ever experience repetitive and persistent thoughts about being upsetting and unwanted?");
+        label27.setFont(new Font("roboto", Font.BOLD, 35));
+        label27.setBounds(100, 300, size6.width, size6.height);
+        JButton yes27 = new JButton("Yes");
+        JButton no27 = new JButton("No");
+        yes27.setBounds(700, 600, size3.width, size3.height);
+        no27.setBounds(1000, 600, size3.width, size3.height);
+        yes27.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                anxietyCounter++;
+                frame.add(adultPanel25);
+                adultPanel24.setVisible(false);
+                adultPanel25.setVisible(true);
+            }
+        });
+        no27.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel25);
+                adultPanel24.setVisible(false);
+                adultPanel25.setVisible(true);
+            }
+        });
+        adultPanel24.setLayout(null);
+        adultPanel24.add(label27);
+        adultPanel24.add(yes27);
+        adultPanel24.add(no27);
+        adultPanel24.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        //-------------------------------------------------------------------------------------
+        
+        //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+        JPanel adultPanel26 = new JPanel();  
+        JLabel label28 = new JLabel("Do you ever experience intense fear causing panic, shortness of breath, sweating, shaking, nausea?");
+        label28.setFont(new Font("roboto", Font.BOLD, 32));
+        label28.setBounds(150, 300, size6.width, size6.height);
+        JButton yes28 = new JButton("Yes");
+        JButton no28 = new JButton("No");
+        yes28.setBounds(700, 600, size3.width, size3.height);
+        no28.setBounds(1000, 600, size3.width, size3.height);
+        yes28.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                anxietyCounter++;
+                frame.add(adultPanel26);
+                adultPanel25.setVisible(false);
+                adultPanel26.setVisible(true);
+            }
+        });
+        no28.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel26);
+                adultPanel25.setVisible(false);
+                adultPanel26.setVisible(true);
+            }
+        });
+        adultPanel25.setLayout(null);
+        adultPanel25.add(label28);
+        adultPanel25.add(yes28);
+        adultPanel25.add(no28);
+        //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+        //=====================================================================================
+        JPanel adultPanel27 = new JPanel();
+        JLabel label29 = new JLabel("Do you ever engage in repetitive behaviors to manage your worry?");
+        label29.setFont(new Font("roboto", Font.BOLD, 50));
+        label29.setBounds(100, 300, size6.width, size6.height);
+        JButton yes29 = new JButton("Yes");
+        JButton no29 = new JButton("No");;
+        yes29.setBounds(700, 600, size3.width, size3.height);
+        no29.setBounds(1000, 600, size3.width, size3.height);
+        yes29.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                anxietyCounter++;
+                frame.add(adultPanel27);
+                adultPanel26.setVisible(false);
+                adultPanel27.setVisible(true);
+            }
+        });
+        no29.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel27);
+                adultPanel26.setVisible(false);
+                adultPanel27.setVisible(true);
+            }
+        });
+        adultPanel26.setLayout(null);
+        adultPanel26.add(label29);
+        adultPanel26.add(yes29);
+        adultPanel26.add(no29);
+        adultPanel26.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        //=====================================================================================
+         JPanel adultPanel28 = new JPanel();
+        JLabel label30 = new JLabel("Do you see noticeable fluctuations in weight?");
+        label30.setFont(new Font("roboto", Font.BOLD, 50));
+        label30.setBounds(400, 300, size6.width, size6.height);
+        JButton yes30 = new JButton("Yes");
+        JButton no30 = new JButton("No");;
+        yes30.setBounds(700, 600, size3.width, size3.height);
+        no30.setBounds(1000, 600, size3.width, size3.height);
+        yes30.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                eatingdisorderCounter++;
+                frame.add(adultPanel28);
+                adultPanel27.setVisible(false);
+                adultPanel28.setVisible(true);
+            }
+        });
+        no30.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel28);
+                adultPanel27.setVisible(false);
+                adultPanel28.setVisible(true);
+            }
+        });
+        adultPanel27.setLayout(null);
+        adultPanel27.add(label30);
+        adultPanel27.add(yes30);
+        adultPanel27.add(no30);
+        adultPanel27.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+//==============================================================================================
+ 
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+        JPanel adultPanel29 = new JPanel();
+        JLabel label31 = new JLabel("Are you uncomfortable eating in front of others?");
+        label31.setFont(new Font("roboto", Font.BOLD, 50));
+        label31.setBounds(370, 300, size6.width, size6.height);
+        JButton yes31 = new JButton("Yes");
+        JButton no31 = new JButton("No");;
+        yes31.setBounds(700, 600, size3.width, size3.height);
+        no31.setBounds(1000, 600, size3.width, size3.height);
+        yes31.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                eatingdisorderCounter++;
+                frame.add(adultPanel29);
+                adultPanel28.setVisible(false);
+                adultPanel29.setVisible(true);
+            }
+        });
+        no31.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel29);
+                adultPanel28.setVisible(false);
+                adultPanel29.setVisible(true);
+            }
+        });
+        adultPanel28.setLayout(null);
+        adultPanel28.add(label31);
+        adultPanel28.add(yes31);
+        adultPanel28.add(no31);
+        adultPanel28.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+        JPanel adultPanel30 = new JPanel();
+        JLabel label32 = new JLabel("Do you check yourself in the mirror for perceived flaws frequently?");
+        label32.setFont(new Font("roboto", Font.BOLD, 50));
+        label32.setBounds(100, 300, size6.width, size6.height);
+        JButton yes32 = new JButton("Yes");
+        JButton no32 = new JButton("No");;
+        yes32.setBounds(700, 600, size3.width, size3.height);
+        no32.setBounds(1000, 600, size3.width, size3.height);
+        yes32.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                eatingdisorderCounter++;
+                frame.add(adultPanel30);
+                adultPanel29.setVisible(false);
+                adultPanel30.setVisible(true);
+            }
+        });
+        no32.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel30);
+                adultPanel29.setVisible(false);
+                adultPanel30.setVisible(true);
+            }
+        });
+        adultPanel29.setLayout(null);
+        adultPanel29.add(label32);
+        adultPanel29.add(yes32);
+        adultPanel29.add(no32);
+        adultPanel29.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+        JPanel adultPanel31 = new JPanel();
+        JLabel label33 = new JLabel("Do you show a lot of interest in social situations?");
+        label33.setFont(new Font("roboto", Font.BOLD, 50));
+        label33.setBounds(350, 300, size6.width, size6.height);
+        JButton yes33 = new JButton("Yes");
+        JButton no33 = new JButton("No");;
+        yes33.setBounds(700, 600, size3.width, size3.height);
+        no33.setBounds(1000, 600, size3.width, size3.height);
+        yes33.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {        
+                frame.add(adultPanel31);
+                adultPanel30.setVisible(false);
+                adultPanel31.setVisible(true);
+            }
+        });
+        no33.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                aspergerCounter++;
+                depressioncounter++;
+                ptsdCounter++;
+                frame.add(adultPanel31);
+                adultPanel30.setVisible(false);
+                adultPanel31.setVisible(true);
+            }
+        });
+        adultPanel30.setLayout(null);
+        adultPanel30.add(label33);
+        adultPanel30.add(yes33);
+        adultPanel30.add(no33);
+        adultPanel30.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    JPanel adultPanel32 = new JPanel();
+        JLabel label34 = new JLabel("Are you extremely sensitive to noises, touch, odor, and tastes?");
+        label34.setFont(new Font("roboto", Font.BOLD, 50));
+        label34.setBounds(150, 300, size6.width, size6.height);
+        JButton yes34 = new JButton("Yes");
+        JButton no34 = new JButton("No");;
+        yes34.setBounds(700, 600, size3.width, size3.height);
+        no34.setBounds(1000, 600, size3.width, size3.height);
+        yes34.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                aspergerCounter++;
+                frame.add(adultPanel32);
+                adultPanel31.setVisible(false);
+                adultPanel32.setVisible(true);
+            }
+        });
+        no34.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel32);
+                adultPanel31.setVisible(false);
+                adultPanel32.setVisible(true);
+            }
+        });
+        adultPanel31.setLayout(null);
+        adultPanel31.add(label34);
+        adultPanel31.add(yes34);
+        adultPanel31.add(no34);
+        adultPanel31.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+JPanel adultPanel33 = new JPanel();
+        JLabel label35 = new JLabel("Would you consider yourself pretty concrete in your everday routine?");
+        label35.setFont(new Font("roboto", Font.BOLD, 50));
+        label35.setBounds(60, 300, size6.width, size6.height);
+        JButton yes35 = new JButton("Yes");
+        JButton no35 = new JButton("No");;
+        yes35.setBounds(700, 600, size3.width, size3.height);
+        no35.setBounds(1000, 600, size3.width, size3.height);
+        yes35.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                aspergerCounter++;
+                frame.add(adultPanel33);
+                adultPanel32.setVisible(false);
+                adultPanel33.setVisible(true);
+            }
+        });
+        no35.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel33);
+                adultPanel32.setVisible(false);
+                adultPanel33.setVisible(true);
+            }
+        });
+        adultPanel32.setLayout(null);
+        adultPanel32.add(label35);
+        adultPanel32.add(yes35);
+        adultPanel32.add(no35);
+        adultPanel32.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+        JPanel adultPanel34 = new JPanel();
+        JLabel label36 = new JLabel("Do you have a short attention span?");
+        label36.setFont(new Font("roboto", Font.BOLD, 50));
+        label36.setBounds(520, 300, size6.width, size6.height);
+        JButton yes36 = new JButton("Yes");
+        JButton no36 = new JButton("No");;
+        yes36.setBounds(700, 600, size3.width, size3.height);
+        no36.setBounds(1000, 600, size3.width, size3.height);
+        yes36.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                insomniaCounter++;
+                frame.add(adultPanel34);
+                adultPanel33.setVisible(false);
+                adultPanel34.setVisible(true);
+            }
+        });
+        no36.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel34);
+                adultPanel33.setVisible(false);
+                adultPanel34.setVisible(true);
+            }
+        });
+        adultPanel33.setLayout(null);
+        adultPanel33.add(label36);
+        adultPanel33.add(yes36);
+        adultPanel33.add(no36);
+        adultPanel33.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+       
+        //====================================================================================
+        frame.setSize(1800, 1000);
+        frame.setVisible(true);
+ 
+ 
+        //-------------------------------------------------------------------------------------
+        JPanel adultPanel35 = new JPanel();  
+        JLabel label37 = new JLabel("Would you say your committing errors or accidents more often than before?");
+        label37.setFont(new Font("roboto", Font.BOLD, 36));
+        label37.setBounds(200, 300, size6.width, size6.height);
+        JButton yes37 = new JButton("Yes");
+        JButton no37 = new JButton("No");
+        yes37.setBounds(700, 600, size3.width, size3.height);
+        no37.setBounds(1000, 600, size3.width, size3.height);
+        yes37.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                insomniaCounter++;
+                frame.add(adultPanel35);
+                adultPanel34.setVisible(false);
+                adultPanel35.setVisible(true);
+            }
+        });
+        no37.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(adultPanel35);
+                adultPanel34.setVisible(false);
+                adultPanel35.setVisible(true);
+            }
+        });
+        adultPanel34.setLayout(null);
+        adultPanel34.add(label37);
+        adultPanel34.add(yes37);
+        adultPanel34.add(no37);
+        adultPanel34.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        //-------------------------------------------------------------------------------------
+        
+        resultPanel = new JPanel();  
+        JLabel label38 = new JLabel("Do you feel sleepy in the daytime quite frequently?");
+        label38.setFont(new Font("roboto", Font.BOLD, 50));
+        label38.setBounds(350, 300, size6.width, size6.height);
+        JButton yes38 = new JButton("Yes");
+        JButton no38 = new JButton("No");
+        yes38.setBounds(700, 600, size3.width, size3.height);
+        no38.setBounds(1000, 600, size3.width, size3.height);
+        yes38.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                insomniaCounter++;
+                frame.add(resultPanel);
+                adultPanel35.setVisible(false);
+                resultPanel.setVisible(true);
+                finalPage();
+            }
+        });
+        no38.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+                frame.add(resultPanel);
+                adultPanel35.setVisible(false);
+                resultPanel.setVisible(true);
+                finalPage();
+            }
+        });
+        adultPanel35.setLayout(null);
+        adultPanel35.add(label38);
+        adultPanel35.add(yes38);
+        adultPanel35.add(no38);
+        
+        //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ 
+        //=====================================================================================
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    }
+
+public static void finalPage() {
+    JLabel resultMessage = new JLabel("");
+    resultMessage.setFont(new Font("Serif", Font.BOLD, 50));
+    resultMessage.setBounds(10, 700, size6.width, size6.height);
+    int n = 200;
+    
+    System.out.print(ptsdCounter + " " + ocdCounter + " " + parkinsonCounter + " " + alzheimersCounter + " " + bipolarCounter + " " + schizophreniaCounter + " " + dissociativeidentityCounter + " " + depressioncounter + " " + aspergerCounter + " " + anxietyCounter + " " + eatingdisorderCounter + " " + insomniaCounter + " " + alsCounter);
+
+    if(ptsdCounter>2){
+        JLabel l1 = new JLabel("You may have PTSD, please consult a doctor for more information");
+        l1.setBounds(50, n, size6.width, size6.height);
+        resultPanel.add(l1);
+        n+=50;
+    }
+
+    if(ocdCounter>2){
+        JLabel l2 = new JLabel("You may have OCD, please consult a doctor for more information");
+        l2.setBounds(50, n, size6.width, size6.height);
+        resultPanel.add(l2);
+        n+=50;
+    }
+    if(parkinsonCounter>2){
+        JLabel l3= new JLabel("You may have Parkinson's Disease, please consult a doctor for more information");
+        l3.setBounds(50, n, size6.width, size6.height);
+        resultPanel.add(l3);
+        n+=50;
+    }
+
+    if(alzheimersCounter>2){
+        JLabel l4 = new JLabel("You may have Alzheimers, please consult a doctor for more information");
+        l4.setBounds(50, n, size6.width, size6.height);
+        resultPanel.add(l4);
+        n+=50;
+    }
+
+    if(bipolarCounter>2){
+        JLabel l5 = new JLabel("You may have Bipolar disorder, please consult a doctor for more information");
+        l5.setBounds(50, n, size6.width, size6.height);
+        resultPanel.add(l5);
+        n+=50;
+    }
+    
+    if(schizophreniaCounter>2){
+        JLabel l6 = new JLabel("You may have Als, please consult a doctor for more information");
+        l6.setBounds(50, n, size6.width, size6.height);
+        resultPanel.add(l6);
+        n+=50;
+    }
+
+    if(dissociativeidentityCounter>2){
+        JLabel l7 = new JLabel("You may have dissociative identity disorder, please consult a doctor for more information");
+        l7.setBounds(50, n, size6.width, size6.height);
+        resultPanel.add(l7);
+        n+=50;
+    }
+
+    if(depressioncounter>2){
+        JLabel l8 = new JLabel("You may have Depression, please consult a doctor for more information");
+        l8.setBounds(50, n, size6.width, size6.height);
+        resultPanel.add(l8);
+        n+=50;
+    }
+
+    if(aspergerCounter>2){
+        JLabel l9 = new JLabel("You may have Asperger's Syndrome, please consult a doctor for more information");
+        l9.setBounds(50, n, size6.width, size6.height);
+        resultPanel.add(l9);
+        n+=50;
+    }
+    
+    if(anxietyCounter>2){
+        JLabel l10 = new JLabel("You may have Anxiety, please consult a doctor for more information");
+        l10.setBounds(50, n, size6.width, size6.height);
+        resultPanel.add(l10);
+        n+=50;
+    }
+    
+    if(eatingdisorderCounter>2){
+        JLabel l11 = new JLabel("You may have an eating disorder, please consult a doctor for more information");
+        l11.setBounds(50, n, size6.width, size6.height);
+        resultPanel.add(l11);
+        n+=50;
+    }
+    
+    if(insomniaCounter>2){
+        JLabel l12 = new JLabel("You may have Insomnia, please consult a doctor for more information");
+        l12.setBounds(50, n, size6.width, size6.height);
+        resultPanel.add(l12);
+        n+=50;
+    }
+    
+    if(alsCounter>2){
+        JLabel l13 = new JLabel("You may have Als, please consult a doctor for more information");
+        l13.setBounds(50, n, size6.width, size6.height);
+        resultPanel.add(l13);
+        n+=50;
+    }
+    
+    if(ptsdCounter<3 && ocdCounter<3 && parkinsonCounter<3 && alzheimersCounter<3 && bipolarCounter<3 && schizophreniaCounter<3 && aspergerCounter<3 && dissociativeidentityCounter<3 && depressioncounter<3 && anxietyCounter<3 && eatingdisorderCounter<3 && insomniaCounter<3 && alsCounter<3){
+        JLabel l14 = new JLabel("You seem to be normal");
+        l14.setBounds(50, n, size6.width, size6.height);
+        resultPanel.add(l14);
+    }
+    
+    resultPanel.add(resultMessage);
+}
+}
+      
+  
